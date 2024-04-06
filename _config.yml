@@ -2,8 +2,8 @@
 title               : Sindi Banda
 description         : >-
                       "Keep learning everyday."
-                    
-baseurl             : ""                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
+url                 :  "https://bandsind.github.io"             
+baseurl             : ""                 # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : bandsind/bandsind.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 #remote_theme        : YoussefRaafatNasry/portfolYOU
 open_new_tab        : true                             # Opens external URLs in new tab (works for posts, projects and navbar only)
@@ -108,4 +108,6 @@ exclude:
   - LICENSE
   - "*.log"
 
- 
+github:
+  [metadata]
+  #token: ENV["JEKYLL_GITHUB_TOKEN"]
