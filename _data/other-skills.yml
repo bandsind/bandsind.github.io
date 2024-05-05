@@ -6,4 +6,11 @@
   percentage: 90
   color: success
 
-  
+
+
+- name: Machine Learning
+  percentage: 90
+  color: warning
+
+
+

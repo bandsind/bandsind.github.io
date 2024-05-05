@@ -1,7 +1,7 @@
 ### Site Settings ###
 title               : Sindi Banda
 description         : >-
-                      "Keep learning everyday."
+                      "Currently Updating and Making Changes"
 url                 :  "https://bandsind.github.io"             
 baseurl             : ""                 # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : bandsind/bandsind.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
@@ -79,7 +79,7 @@ buymeacoffee:
   username: your_username
   color: "#007bff"
   message: "Thank you for visiting."                    # Message to be displayed aside from the button for a few seconds.
-  description: "Support me on Buy me a coffee!"
+  description: " "
 
 
 ### Defaults for collections ###
