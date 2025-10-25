@@ -20,7 +20,7 @@ const algoliaHandler = () => {
     indexName: algoliaSettings.indexName,
     searchClient: algoliasearch(
       algoliaSettings.applicationID,
-      algoliaSettings.apiKey
+      algoliaSettings.apiKey,
     ),
     searchFunction: (helper) => {
       if ((_$("#reimu-search-input input") as HTMLInputElement).value) {
@@ -51,7 +51,7 @@ const algoliaHandler = () => {
             '<a href="' +
             data.permalink +
             '" class="reimu-hit-item-link" title="' +
-            (data.title || '') +
+            (data.title || "") +
             '">' +
             data._highlightResult.title.value +
             "</a>"
@@ -62,7 +62,7 @@ const algoliaHandler = () => {
             '<div id="reimu-hits-empty">' +
             algoliaSettings.labels.hits_empty.replace(
               /\$\{query}/,
-              data.query
+              data.query,
             ) +
             "</div>"
           );
@@ -114,7 +114,8 @@ const algoliaHandler = () => {
     ?.off("click")
     .on("click", (event) => {
       event.stopPropagation();
-      const scrollWidth = window.innerWidth - document.documentElement.offsetWidth;
+      const scrollWidth =
+        window.innerWidth - document.documentElement.offsetWidth;
       _$("#container")!.style.marginRight = scrollWidth + "px";
       _$("#header-nav")!.style.marginRight = scrollWidth + "px";
       const popup = _$(".popup");
@@ -122,12 +123,10 @@ const algoliaHandler = () => {
       _$("#mask")!.classList.remove("hide");
       document.body.style.overflow = "hidden";
       setTimeout(() => {
-        (_$("#reimu-search-input input"))?.focus();
+        _$("#reimu-search-input input")?.focus();
       }, 100);
       const keydownHandler = (e) => {
-        const focusables = popup.querySelectorAll(
-          "input, [href]"
-        );
+        const focusables = popup.querySelectorAll("input, [href]");
         const firstFocusable = focusables[0] as HTMLElement;
         const lastFocusable = focusables[focusables.length - 1] as HTMLElement;
         if (e.key === "Escape") {
@@ -155,7 +154,7 @@ const algoliaHandler = () => {
       (popup as any).__closePopup = closePopup;
     });
 
-    _$(".popup-btn-close")
+  _$(".popup-btn-close")
     ?.off("click")
     .on("click", () => {
       (_$(".popup") as any).__closePopup?.();

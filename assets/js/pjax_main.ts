@@ -33,11 +33,15 @@ _$$(
   if (window.siteConfig.icon_font) {
     element.innerHTML = window.siteConfig.anchor_icon
       ? `&#x${window.siteConfig.anchor_icon};`
-      : window.siteConfig.anchor_icon === false ? "" : "&#xe635;";
+      : window.siteConfig.anchor_icon === false
+        ? ""
+        : "&#xe635;";
   } else {
     element.innerHTML = window.siteConfig.anchor_icon
       ? `&#x${window.siteConfig.anchor_icon};`
-      : window.siteConfig.anchor_icon === false ? "" : "&#xf292;";
+      : window.siteConfig.anchor_icon === false
+        ? ""
+        : "&#xf292;";
   }
 });
 
@@ -326,7 +330,7 @@ if (shareWeixinHandler) {
 shareWeixinHandler = (e) => {
   if (e.target.closest(".share-icon.icon-weixin")) return;
   _$("#share-weixin")?.classList.remove("active");
-}
+};
 document.on("click", shareWeixinHandler);
 
 _$(".share-icon.icon-weixin")
@@ -360,18 +364,24 @@ _$(".share-icon.icon-weixin")
         return;
       }
       (_$("#share-weixin-qr") as HTMLImageElement).src = dataUrl;
-      snapdom.toPng(_$(".share-weixin-dom")).then((img) => {
-        _$(".share-weixin-canvas").appendChild(img);
-      }).catch(() => {
-        // we assume that the error is caused by the browser's security policy
-        // so we will remove the banner and try again
-        _$("#share-weixin-banner").remove();
-        snapdom.toPng(_$(".share-weixin-dom")).then((img) => {
+      snapdom
+        .toPng(_$(".share-weixin-dom"))
+        .then((img) => {
           _$(".share-weixin-canvas").appendChild(img);
-        }).catch(() => {
-          console.error("Failed to generate weixin share image.");
+        })
+        .catch(() => {
+          // we assume that the error is caused by the browser's security policy
+          // so we will remove the banner and try again
+          _$("#share-weixin-banner").remove();
+          snapdom
+            .toPng(_$(".share-weixin-dom"))
+            .then((img) => {
+              _$(".share-weixin-canvas").appendChild(img);
+            })
+            .catch(() => {
+              console.error("Failed to generate weixin share image.");
+            });
         });
-      });
     });
   });
 
