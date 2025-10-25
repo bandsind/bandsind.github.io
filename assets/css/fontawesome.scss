@@ -1,5 +1,7 @@
 :root {
-  --font-icon: "Font Awesome 7 Free", "Font Awesome 7 Brands", "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome";
+  --font-icon: "Font Awesome 7 Free", "Font Awesome 7 Brands",
+    "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free",
+    "Font Awesome 5 Brands", "FontAwesome";
 }
 
 .archives-tag-list-link:before {
@@ -181,13 +183,21 @@
   }
 }
 
-@if index($social-keys, "facebook") or index($share-keys, "facebook") or $triangle-badge-icon == "facebook" {
+@if index($social-keys, "facebook") or
+  index($share-keys, "facebook") or
+  $triangle-badge-icon ==
+  "facebook"
+{
   .icon-facebook:before {
     content: "\f09a";
   }
 }
 
-@if index($social-keys, "twitter") or index($share-keys, "twitter") or $triangle-badge-icon == "twitter" {
+@if index($social-keys, "twitter") or
+  index($share-keys, "twitter") or
+  $triangle-badge-icon ==
+  "twitter"
+{
   .icon-twitter:before {
     content: "\e61b";
   }
@@ -199,7 +209,11 @@
   }
 }
 
-@if index($social-keys, "linkedin") or index($share-keys, "linkedin") or $triangle-badge-icon == "linkedin" {
+@if index($social-keys, "linkedin") or
+  index($share-keys, "linkedin") or
+  $triangle-badge-icon ==
+  "linkedin"
+{
   .icon-linkedin:before {
     content: "\f08c";
   }
@@ -247,7 +261,11 @@
   }
 }
 
-@if index($social-keys, "weibo") or index($share-keys, "weibo") or $triangle-badge-icon == "weibo" {
+@if index($social-keys, "weibo") or
+  index($share-keys, "weibo") or
+  $triangle-badge-icon ==
+  "weibo"
+{
   .icon-weibo:before {
     content: "\f18a";
   }
@@ -259,7 +277,11 @@
   }
 }
 
-@if index($social-keys, "reddit") or index($share-keys, "reddit") or $triangle-badge-icon == "reddit" {
+@if index($social-keys, "reddit") or
+  index($share-keys, "reddit") or
+  $triangle-badge-icon ==
+  "reddit"
+{
   .icon-reddit:before {
     content: "\f1a1";
   }
@@ -283,7 +305,10 @@
   }
 }
 
-@if index($social-keys, "stackoverflow") or $triangle-badge-icon == "stackoverflow" {
+@if index($social-keys, "stackoverflow") or
+  $triangle-badge-icon ==
+  "stackoverflow"
+{
   .icon-stackoverflow:before {
     content: "\f16c";
   }

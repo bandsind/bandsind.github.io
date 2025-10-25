@@ -48,7 +48,9 @@
   justify-content: center;
   background: var(--color-header-background);
   box-shadow: var(--shadow-card);
-  transition: background 1s, top 0.3s;
+  transition:
+    background 1s,
+    top 0.3s;
   z-index: 200;
 
   &:hover {
@@ -85,7 +87,7 @@
   letter-spacing: 2px;
   display: inline-block;
   transform: translateY(-20%);
-  text-shadow: 0 0 0.5rem rgba(0, 0, 0, .7);
+  text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
 
   @media #{$mg-large} {
     font-size: 36px;
@@ -208,7 +210,9 @@
   align-items: center;
   font-size: 24px;
   font-weight: 400;
-  transition: transform 0.3s, color 0.3s;
+  transition:
+    transform 0.3s,
+    color 0.3s;
   will-change: transform;
 
   &.rotate {
@@ -232,7 +236,8 @@
   }
 }
 
-#sub-nav, #i18n-nav {
+#sub-nav,
+#i18n-nav {
   display: flex;
   align-items: center;
 }

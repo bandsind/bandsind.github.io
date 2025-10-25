@@ -10,12 +10,12 @@
   margin: 8px;
   color: var(--color-link) !important;
   position: relative;
-  transition: all .2s;
+  transition: all 0.2s;
   &:before {
     display: block;
     opacity: 0.8;
     font-size: 24px;
-    transition: all .2s;
+    transition: all 0.2s;
     will-change: transform;
   }
   &:hover:before {
