@@ -1,3 +1,47 @@
+## v0.13.3
+
+**2025-10-26**
+
+### 修复
+
+- 修复 pjax 模式下 valine 评论系统多次加载的问题
+
+### 特性
+
+- 优化样式
+  - 优化多语言下拉，分享卡片和赞助的动画效果
+  - 移除侧边栏的 hover 放大效果
+  - 优化移动端下归档页的样式
+  - 优化移动端下的置顶按钮样式，现在移动端下将始终展示向上箭头图标
+- `firework` 和 `player` 新增 `disable_on_mobile` 配置用于控制是否在移动端禁用，默认关闭
+  ```yaml
+  firework:
+    disable_on_mobile: false # true | false
+  player:
+    disable_on_mobile: false # true | false
+  ```
+
+---
+
+### Fixes
+
+- Fixed the issue of Valine comment system loading multiple times in pjax mode.
+
+### Features
+
+- Optimized styles
+  - Improved animation effects for the language dropdown, share cards, and sponsorship.
+  - Removed the hover zoom effect on the sidebar.
+  - Optimized the archive page layout on mobile devices.
+  - Improved the back-to-top button style on mobile devices; it will now always display an upward arrow icon.
+- Added `disable_on_mobile` configuration for `firework` and `player` to control whether they are disabled on mobile devices. Default is `false`.
+  ```yaml
+  firework:
+    disable_on_mobile: false # true | false
+  player:
+    disable_on_mobile: false # true | false
+  ```
+
 ## v0.13.2
 
 **2025-10-19**
