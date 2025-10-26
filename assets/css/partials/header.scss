@@ -274,11 +274,16 @@
   border-radius: $tag-radius;
   background-color: var(--color-wrap);
   margin-top: 4px;
-  display: none;
   z-index: 1;
   font-size: 14px;
-  overflow: hidden;
   box-shadow: var(--shadow-card);
+  interpolate-size: allow-keywords;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
 }
 
 .select-items li {
@@ -295,7 +300,10 @@
 }
 
 .select-items.show {
-  display: block;
+  height: auto;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .select-items li.selected {
