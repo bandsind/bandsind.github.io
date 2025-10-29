@@ -107,12 +107,7 @@
     margin: $line-height-title 0 0.75em;
 
     @if $icon_font {
-      &:before {
-        font-family: $font-icon;
-        font-weight: normal;
-      }
-
-      a {
+      a.header-anchor {
         font-family: $font-icon;
         opacity: 0.5;
         margin-right: 4px;
@@ -124,12 +119,7 @@
         }
       }
     } @else {
-      &:before {
-        font-family: var(--font-icon);
-        font-weight: normal;
-      }
-
-      a {
+      a.header-anchor {
         font-family: var(--font-icon);
         opacity: 0.5;
         margin-right: 4px;

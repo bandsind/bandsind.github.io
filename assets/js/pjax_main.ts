@@ -28,7 +28,7 @@ var scrollIntoViewAndWait = (element: HTMLElement) => {
 
 // anchor
 _$$(
-  ".article-entry h1>a, .article-entry h2>a, .article-entry h3>a, .article-entry h4>a, .article-entry h5>a, .article-entry h6>a",
+  ".article-entry h1>a.header-anchor, .article-entry h2>a.header-anchor, .article-entry h3>a.header-anchor, .article-entry h4>a.header-anchor, .article-entry h5>a.header-anchor, .article-entry h6>a.header-anchor",
 ).forEach((element) => {
   if (window.siteConfig.icon_font) {
     element.innerHTML = window.siteConfig.anchor_icon
