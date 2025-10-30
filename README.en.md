@@ -248,6 +248,88 @@ banner: "images/banner.webp"
 
 The favicon is saved at `themes/hugo-theme-reimu/static/favicon.ico`. You can replace it with your own file.
 
+#### Article Summary
+
+Disabled by default. You can choose to display the article summary in the subtitle or at the beginning of the article.
+
+```yaml
+summary:
+  enable: false
+  style: 'subtitle' # 'subtitle' or 'blockquote'
+```
+
+</details>
+
+<details>
+
+<summary>Sidebar</summary>
+
+### Sidebar
+
+#### Sidebar Position
+
+Default on the right. You can modify it in the inner `_config.yml`.
+
+```yaml
+sidebar: right # left | right
+```
+
+Additionally, you can control it through the article's front-matter, which takes precedence over the global configuration.
+
+```yaml
+---
+sidebar: left # left | right
+---
+```
+
+#### TOC
+
+Default enabled. You can modify it in the inner `_config.yml`.
+
+```yaml
+toc: true # true | false
+```
+
+Additionally, you can control it through the article's front-matter, which takes precedence over the global configuration.
+
+```yaml
+---
+toc: true # true | false
+---
+```
+
+#### Social Links
+
+You can configure the social links in the sidebar in the inner `_config.yml`.
+
+```yaml
+social:
+  # github: https://github.com/yourname
+  # bilibili: https://space.bilibili.com/yourname
+  # ...
+```
+
+#### Widgets
+
+You can configure the widgets in the sidebar in the inner `_config.yml`.
+
+```yaml
+widgets:
+  - category
+  - tag
+  - tagcloud
+  - recent_posts
+```
+
+You can also configure the behavior of the widgets through the following configuration:
+
+```yaml
+category_limits: 10
+tag_limits: 10
+recent_posts_limits: 5
+tagcloud_limits: 20
+```
+
 </details>
 <details>
 <summary>Footer</summary>
@@ -854,6 +936,17 @@ injector:
   body_end: # Inject code snippet right before </body>
   sidebar_begin: # Inject code snippet right after <aside>
   sidebar_end: # Inject code snippet right before </aside>
+```
+
+#### Triangle Badge (v0.13.2+)
+
+Disabled by default. When enabled, it will display a triangle badge in the upper right corner, supporting custom links and icons.
+
+```yaml
+triangle_badge:
+  enable: false
+  icon: github # Same as the icon in the social config
+  link: https://github.com/D-Sketon/hexo-theme-reimu
 ```
 
 </details>
