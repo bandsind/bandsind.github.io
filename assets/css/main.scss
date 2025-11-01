@@ -53,6 +53,8 @@ $social-keys: {{ delimit (apply $social_keys "printf" "'%s'" "." ) "," }};
 {{ $share_keys = $share_keys | append "__dummy__" }}
 $share-keys: {{ delimit (apply $share_keys "printf" "'%s'" "." ) "," }};
 
+$content_max_width: {{ default "1350px" $params.layout.max_width }};
+
 :root {
   --footer-icon: url({{ $params.footer.icon.url }});
   --top-icon: url({{ $params.top.icon.url }});
@@ -243,7 +245,7 @@ a, .main-nav-icon, .popup-btn-close, button {
   display: flex;
   padding-top: 8px;
   align-items: stretch;
-  max-width: 1350px;
+  max-width: $content_max_width;
   margin: 0 auto;
   overflow: visible;
 }
