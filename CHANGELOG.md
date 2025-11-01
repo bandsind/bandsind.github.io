@@ -1,3 +1,53 @@
+## v0.13.4
+
+**2025-11-01**
+
+### 修复
+
+- 修复 markdown 小标题中的超链接错误显示的问题
+
+### 特性
+
+- 新增 keywords meta 标签，用于提升 SEO 优化，可在 front-matter 中通过 `keywords` 字段自定义，支持字符串和数组两种形式：
+  ```yaml
+  ---
+  keywords: keyword1, keyword2, keyword3 # 文章关键词，逗号分隔字符串形式
+  keywords:
+    - keyword1
+    - keyword2
+    - keyword3 # 文章关键词，数组形式
+  ---
+  ```
+- 新增 `layout.max_width` 配置用于控制博客内容的最大宽度，默认值为 `1350px`
+  ```yaml
+  layout:
+    max_width: 1350px # 博客内容最大宽度
+  ```
+
+---
+
+### Fixes
+
+- Fixed incorrect display of hyperlinks in Markdown subheadings.
+
+### Features
+
+- Added `keywords` meta tag to improve SEO optimization. Customize via the `keywords` field in front-matter, supporting both string and array formats:
+  ```yaml
+  ---
+  keywords: keyword1, keyword2, keyword3 # Article keywords as a comma-separated string
+  keywords:
+    - keyword1
+    - keyword2
+    - keyword3 # Article keywords as an array
+  ---
+  ```
+- Added `layout.max_width` configuration to control the maximum width of blog content. The default value is `1350px`:
+  ```yaml
+  layout:
+    max_width: 1350px # Maximum width of blog content
+  ```
+
 ## v0.13.3
 
 **2025-10-26**
