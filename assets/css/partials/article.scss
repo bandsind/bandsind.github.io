@@ -213,6 +213,7 @@
     height: auto;
     display: block;
     margin: auto;
+    border-radius: $post-radius;
   }
 
   img.lazyloaded {
@@ -222,6 +223,7 @@
 
   iframe {
     border: none;
+    border-radius: $post-radius;
   }
 
   table {
