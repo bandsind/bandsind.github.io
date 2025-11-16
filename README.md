@@ -54,6 +54,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - Twikoo
   - Gitalk
   - Giscus
+  - Disqus
 
 ### 统计与分析
 
@@ -523,6 +524,16 @@ gitalk:
   owner: "repo owner"
   admin: "repo owner and collaborators"
   md5: false # 是否使用 md5 加密路径
+```
+
+若基于 [Disqus](https://disqus.com/)  
+请在内层 `params.yml` 中将 `disqus.enable` 改为 `true`，并填入自己的 `shortname`
+
+```yml
+disqus:
+  enable: true
+  shortname: "your shortname"
+  count: true # 是否启用评论数量统计
 ```
 
 </details>
