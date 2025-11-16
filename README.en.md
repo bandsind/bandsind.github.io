@@ -91,6 +91,7 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
   - Heatmap
   - Tag Roulette
   - Alert Blockquote
+  - Tabs
   - Gallery
 - 🎨 Dynamic theme color adaptation
 - ©️ Article copyright declaration
@@ -1011,6 +1012,26 @@ Your content here
 It is applicable to scenarios where Hugo v0.132.0 or lower cannot use Hugo Blockquote render hooks.
 
 The first parameter is the type of block quote, with the following optional parameters: `note`, `tip`, `important`, `warning`, `danger`
+
+#### tabs (v0.14.0+)
+
+```markdown
+{{< tabs [activeTab] ["center"] >}}
+<!-- tabName -->
+Tab content
+<!-- tabName -->
+Tab content
+{{< /tabs >}}
+```
+
+Adapted from the next, volantis, and stellar themes, this feature supports creating tabbed switching effects within articles.
+
+- activeTab: Optional parameter, specifies the default active tab index (counting starts from 1). Default is 1.
+- "center": Optional parameter, specifies that tab titles should be center-aligned. Default is left-aligned.
+- tabName: The title of each tab, must be wrapped in `<!-- tabName -->`. Supports displaying icons using `@` + icon hexadecimal code. Examples:
+  - Title only: `<!-- Title -->`
+  - Icon only: `<!-- @e60c -->`
+  - Icon + Title: `<!-- Title@e60c -->`
 
 #### Gallery Photo Wall (v0.14.0+)
 
