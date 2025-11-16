@@ -84,13 +84,14 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 🎨 Icon support:
   - Iconfont
   - FontAwesome7
-- 🔗 Custom shortcodes for:
+- 🔗 Built-in shortcodes:
   - Internal links
   - External links
   - Friend links
   - Heatmap
   - Tag Roulette
   - Alert Blockquote
+  - Gallery
 - 🎨 Dynamic theme color adaptation
 - ©️ Article copyright declaration
 - 🌐 Custom CDN source / local source configuration
@@ -952,13 +953,13 @@ triangle_badge:
 </details>
 
 <details>
-<summary>Built-in Card Shortcodes</summary>
+<summary>Built-in Shortcodes</summary>
 
-### Built-in Card Shortcodes
+### Built-in Shortcodes
 
 #### friendLink Card
 
-```yaml
+```markdown
 {{< friendsLink >}}
 ```
 
@@ -966,7 +967,7 @@ No parameters, directly reads from the `data/friends.yml` file
 
 #### postLinkCard - Internal Link Card
 
-```yaml
+```markdown
 {{<postLinkCard path="?" cover="?" escape="?" >}}
 ```
 
@@ -974,7 +975,7 @@ The first parameter is the article's `path`; the second parameter (optional) is 
 
 #### externalLinkCard - External Link Card
 
-```yaml
+```markdown
 {{<externalLinkCard title="?" link="?" cover="?">}}
 ```
 
@@ -982,7 +983,7 @@ The first parameter is the article's title; the second parameter is the external
 
 #### Heat Map Card Article Heatmap (v0.8.0+)
 
-```yaml
+```markdown
 {{< heatMapCard levelStandard="?" >}}
 ```
 
@@ -990,7 +991,7 @@ The first parameter is the level standard for the heatmap (graded based on the w
 
 #### tagRoulette (v0.12.0+)
 
-```yaml
+```markdown
 {{< tagRoulette tags="?" icon="?" >}}
 ```
 
@@ -1001,7 +1002,7 @@ tagRoulette is an interactive element that provides a random tag display feature
 
 #### alertBlockquote (v0.12.1+)
 
-```yaml
+```markdown
 {{< alertBlockquote type="?" >}}
 Your content here
 {{</alertBlockquote>}}
@@ -1010,6 +1011,17 @@ Your content here
 It is applicable to scenarios where Hugo v0.132.0 or lower cannot use Hugo Blockquote render hooks.
 
 The first parameter is the type of block quote, with the following optional parameters: `note`, `tip`, `important`, `warning`, `danger`
+
+#### Gallery Photo Wall (v0.14.0+)
+
+```markdown
+{{< gallery >}}
+![alt text](image_url1)
+![alt text](image_url2)
+...
+{{</gallery>}}
+
+Display multiple images in a photo wall format, supporting automatic arrangement and responsive layout.
 
 </details>
 

@@ -84,13 +84,14 @@ A Hakurei Reimu style Hugo theme. Migrated from [hexo-theme-reimu](https://githu
 - 🎨 图标支持：
   - Iconfont
   - FontAwesome7
-- 🔗 自定义短代码：
+- 🔗 内置短代码：
   - 内部链接
   - 外部链接
   - 友情链接
   - 热力图
   - 标签轮盘
   - Alert块引用
+  - 照片墙
 - 🎨 动态适配主题色
 - ©️ 文章版权声明
 - 🌐 自定义 CDN 源 / 本地配置
@@ -975,13 +976,13 @@ triangle_badge:
 </details>
 
 <details>
-<summary>内置卡片shortcode</summary>
+<summary>内置shortcode</summary>
 
-### 内置卡片shortcode
+### 内置shortcode
 
 #### friendLink 友链卡片
 
-```yaml
+```markdown
 {{< friendsLink >}}
 ```
 
@@ -989,7 +990,7 @@ triangle_badge:
 
 #### postLinkCard 内链卡片
 
-```yaml
+```markdown
 {{<postLinkCard path="?" cover="?" escape="?" >}}
 ```
 
@@ -997,7 +998,7 @@ triangle_badge:
 
 #### externalLinkCard 外链卡片
 
-```yaml
+```markdown
 {{<externalLinkCard title="?" link="?" cover="?">}}
 ```
 
@@ -1005,7 +1006,7 @@ triangle_badge:
 
 #### heatMapCard 文章热力图 (v0.8.0+)
 
-```yaml
+```markdown
 {{< heatMapCard levelStandard="?" >}}
 ```
 
@@ -1013,7 +1014,7 @@ triangle_badge:
 
 #### tagRoulette 标签轮盘 (v0.12.0+)
 
-```yaml
+```markdown
 {{< tagRoulette tags="?" icon="?" >}}
 ```
 
@@ -1024,7 +1025,7 @@ tagRoulette 是一个互动元素，提供随机标签展示功能，点击按�
 
 #### alertBlockquote 块引用 (v0.12.1+)
 
-```yaml
+```markdown
 {{< alertBlockquote type="?" >}}
 Your content here
 {{</alertBlockquote>}}
@@ -1033,6 +1034,18 @@ Your content here
 适用于 Hugo v0.132.0 以下版本不能使用 Hugo Blockquote render hooks 的场景。
 
 其中第一个参数为块引用的类型，可选参数为：`note`、`tip`、`important`、`warning`、`danger`
+
+#### gallery 照片墙 (v0.14.0+)
+
+```markdown
+{{< gallery >}}
+![alt text](image_url1)
+![alt text](image_url2)
+...
+{{</gallery>}}
+```
+
+将多张图片以照片墙的形式展示出来，支持自动排列和响应式布局。
 
 </details>
 
