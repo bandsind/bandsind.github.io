@@ -66,6 +66,16 @@ _$$(
   },
 );
 
+// table wrap
+_$$(".article-entry table").forEach((element) => {
+  if (element.closest("div.highlight")) return;
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("table-wrapper");
+  element.parentNode?.insertBefore(wrapper, element);
+  element.parentNode?.removeChild(element);
+  wrapper.appendChild(element);
+});
+
 window.lightboxStatus = "ready";
 window.dispatchEvent(new Event("lightbox:ready"));
 // Mobile nav
