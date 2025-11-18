@@ -1000,19 +1000,23 @@ triangle_badge:
 
 无参数，直接读取 `data/friends.yml` 文件
 
-#### postLinkCard 内链卡片
+#### postLinkCard 内链卡片 (不推荐，建议使用 link)
 
 ```markdown
 {{<postLinkCard path="?" cover="?" escape="?" >}}
 ```
 
+不推荐使用，建议使用 `link` shortcode 代替
+
 其中第一个参数为文章的 `path`；第二个参数（可选）为卡片展示的封面，如果设置为 `auto` 则自动使用博客的 `banner`；第三个参数（可选，`true | false`）表示文章标题是否被转义
 
-#### externalLinkCard 外链卡片
+#### externalLinkCard 外链卡片 (不推荐，建议使用 link)
 
 ```markdown
 {{<externalLinkCard title="?" link="?" cover="?">}}
 ```
+
+不推荐使用，建议使用 `link` shortcode 代替
 
 其中第一个参数为文章的标题；第二个参数为文章的外部链接，第三个参数（可选）为卡片展示的封面，如果设置为 `auto` 则自动使用缺省封面
 
@@ -1046,6 +1050,19 @@ Your content here
 适用于 Hugo v0.132.0 以下版本不能使用 Hugo Blockquote render hooks 的场景。
 
 其中第一个参数为块引用的类型，可选参数为：`note`、`tip`、`important`、`warning`、`danger`
+
+#### link 链接卡片 (v0.14.0+)
+
+```markdown
+{{< link title="?" link/path="?" cover="?" escape="?" >}}
+```
+
+externalLinkCard 和 postLinkCard 的升级版，推荐使用。
+
+- title：链接卡片的标题，内链时可省略，自动使用文章标题
+- link/path：链接的 URL 地址，为保证兼容性，`link` 和 `path` 均可使用，二者效果相同
+- cover：卡片展示的封面，如果设置为 `auto` 则自动使用博客的 `banner` 或缺省封面
+- escape：文章标题是否被转义，取值`true | false`，默认为 `true`
 
 #### tabs 标签页 (v0.14.0+)
 

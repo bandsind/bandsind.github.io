@@ -977,19 +977,23 @@ triangle_badge:
 
 No parameters, directly reads from the `data/friends.yml` file
 
-#### postLinkCard - Internal Link Card
+#### postLinkCard - Internal Link Card (Not recommended, use Link Card instead)
 
 ```markdown
 {{<postLinkCard path="?" cover="?" escape="?" >}}
 ```
 
+Not recommended for use. It is advised to use the `link` shortcode instead.
+
 The first parameter is the article's `path`; the second parameter (optional) is the cover image shown on the card - if set to `auto`, it will automatically use the blog's `banner`; the third parameter (optional, `true | false`) indicates whether the article title should be escaped
 
-#### externalLinkCard - External Link Card
+#### externalLinkCard - External Link Card (Not recommended, use Link Card instead)
 
 ```markdown
 {{<externalLinkCard title="?" link="?" cover="?">}}
 ```
+
+Not recommended for use. It is advised to use the `link` shortcode instead.
 
 The first parameter is the article's title; the second parameter is the external link to the article; the third parameter (optional) is the cover image shown on the card - if set to `auto`, it will automatically use the default cover
 
@@ -1024,7 +1028,20 @@ It is applicable to scenarios where Hugo v0.132.0 or lower cannot use Hugo Block
 
 The first parameter is the type of block quote, with the following optional parameters: `note`, `tip`, `important`, `warning`, `danger`
 
-#### tabs (v0.14.0+)
+#### Link Card (v0.14.0+)
+
+```markdown
+{{< link title="?" link/path="?" cover="?" escape="?" >}}
+```
+
+An upgraded version of `externalLinkCard` and `postLinkCard`, recommended for use.
+
+- **title**: The title of the link card. Can be omitted for internal links, in which case the article title will be used automatically.
+- **link/path**: The URL of the link. For compatibility, both `link` and `path` can be used, and they have the same effect.
+- **cover**: The cover image displayed on the card. If set to `auto`, the blog's `banner` or a default cover will be used automatically.
+- **escape**: Whether the article title should be escaped. Values are `true | false`, with `true` as the default.
+
+#### Tabs (v0.14.0+)
 
 ```markdown
 {{< tabs [activeTab] ["center"] >}}
