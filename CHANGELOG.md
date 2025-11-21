@@ -34,7 +34,17 @@
   ...
   {{</gallery>}}
   ```
+- 新增 Link 短代码，用于替代externalLinkCard和postLinkCard，支持内链和外链。
+  ```markdown
+  {{< link title="?" link/path="?" cover="?" escape="?" >}}
+  ```
+  - title：链接卡片的标题，内链时可省略，自动使用文章标题
+  - link/path：链接的 URL 地址，为保证兼容性，`link` 和 `path` 均可使用，二者效果相同
+  - cover：卡片展示的封面，如果设置为 `auto` 则自动使用博客的 `banner` 或缺省封面
+  - escape：文章标题是否被转义，取值`true | false`，默认为 `true`
 - 优化代码块的样式，现在使用了 Github Theme 的配色方案
+- 优化表格的样式，提升响应式和滚动体验
+- algolia 搜索兼容 DocSearch 格式
 
 ---
 
@@ -72,7 +82,17 @@ Unreleased
   ...
   {{</gallery>}}
   ```
+- Added a new `Link` shortcode to replace `externalLinkCard` and `postLinkCard`, supporting both internal and external links.  
+  ```markdown  
+  {{< link title="?" link/path="?" cover="?" escape="?" >}}  
+  ```  
+  - **title**: The title of the link card. Can be omitted for internal links, where the article title will be used automatically.  
+  - **link/path**: The URL of the link. For compatibility, both `link` and `path` can be used, and they have the same effect.  
+  - **cover**: The cover image displayed on the card. If set to `auto`, the blog's `banner` or default cover will be used automatically.  
+  - **escape**: Whether the article title should be escaped. Values: `true | false`. Default is `true`.
 - Optimized the code block styling, now using the Github Theme color scheme.
+- Optimize the styling of the table to enhance responsiveness and scrolling experience  
+- Ensure Algolia search compatibility with the DocSearch format
 
 ## v0.13.4
 
