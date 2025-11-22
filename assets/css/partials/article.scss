@@ -105,6 +105,7 @@
     font-weight: bold;
     line-height: $line-height-title;
     margin: $line-height-title 0 0.75em;
+    word-wrap: break-word;
 
     @if $icon_font {
       a.header-anchor {
@@ -326,6 +327,10 @@
     background-color: var(--color-footer-background);
     border-radius: $tag-radius;
     transition: 0.3s;
+  }
+
+  p, ul, dl {
+    word-wrap: break-word;
   }
 }
 
