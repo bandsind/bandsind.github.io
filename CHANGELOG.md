@@ -2,6 +2,11 @@
 
 未发布
 
+### 修复
+
+- 修复移动端下超长文本无法换行的问题
+- 修复文章 nav 封面在使用本地图片时可能的404问题
+
 ### 特性
 
 - 新增 [Disqus](https://disqus.com/) 评论系统支持
@@ -49,6 +54,11 @@
 ---
 
 Unreleased
+
+### Fixes
+
+- Fixed an issue where extra-long text could not wrap on mobile devices  
+- Fixed possible 404 errors when using local images for article nav covers
 
 ### Features
 
