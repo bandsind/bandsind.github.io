@@ -20,7 +20,7 @@
                 {{- $cover := partial "helpers/randomCover.html" $ctx -}}
                 {{- if $cover -}}
                   <img
-                    data-src="{{ $cover }}"
+                    data-src="{{ $cover | relURL }}"
                     data-sizes="auto"
                     alt="{{ $v.categories }}"
                     class="lazyload"
