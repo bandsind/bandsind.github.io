@@ -1,10 +1,11 @@
 ## 0.14.0
 
-未发布
+**2025-11-23**
 
 ### 修复
 
 - 修复移动端下超长文本无法换行的问题
+- 修复 postLinkCard 短代码中的错误转义逻辑
 - 修复文章 nav 封面在使用本地图片时可能的404问题
 
 ### 特性
@@ -39,7 +40,7 @@
   ...
   {{</gallery>}}
   ```
-- 新增 Link 短代码，用于替代externalLinkCard和postLinkCard，支持内链和外链。
+- 新增 Link 短代码，用于替代 externalLinkCard 和 postLinkCard，支持内链和外链。
   ```markdown
   {{< link title="?" link/path="?" cover="?" escape="?" >}}
   ```
@@ -53,11 +54,10 @@
 
 ---
 
-Unreleased
-
 ### Fixes
 
-- Fixed an issue where extra-long text could not wrap on mobile devices  
+- Fixed an issue where extra-long text could not wrap on mobile devices
+- Fixed incorrect escaping logic in the postLinkCard shortcode
 - Fixed possible 404 errors when using local images for article nav covers
 
 ### Features
