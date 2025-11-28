@@ -1077,11 +1077,11 @@ Display multiple images in a photo wall format, supporting automatic arrangement
 ```markdown
 {{< grid width=? col=? >}}
 <!-- cell -->
-内容1
+Content 1
 <!-- cell -->
-内容2
+Content 2
 <!-- cell -->
-内容3
+Content 3
 {{< /grid >}}
 ```
 
@@ -1090,6 +1090,18 @@ Display content in a grid layout with responsive design.
 - width: Optional parameter, sets the minimum column width, e.g., `300` means a minimum column width of 300px. Default is `240`
 - col: Optional parameter, sets a fixed number of columns, e.g., `3` means a fixed 3-column layout. Default is auto column count
 - Use `<!-- cell -->` to separate each grid cell, and each cell's content will be rendered independently
+
+#### details Foldable Panel (v0.14.1+)
+
+```markdown
+{{< details summary="?" >}}
+Content
+{{< /details >}}
+```
+
+Create a foldable panel in the article.
+
+- summary: Optional parameter, set the title of the foldable panel
 
 </details>
 
