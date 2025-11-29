@@ -1,3 +1,59 @@
+## 0.14.1
+
+**2025-11-29**
+
+### 特性
+
+- 随机头图现在使用伪随机算法，确保每次生成页面时都能展示不同的头图
+- 新增 Grid 短代码，支持将内容以网格的形式展示出来，支持响应式布局。
+  ```markdown
+  {{< grid width=? col=? >}}
+  <!-- cell -->
+  内容1
+  <!-- cell -->
+  内容2
+  <!-- cell -->
+  内容3
+  {{< /grid >}}
+  ```
+    - width：可选参数，设置最小列宽，如 `300` 表示最小列宽为 300px，默认值为 `240`
+    - col：可选参数，设置固定列数，如 `3` 表示固定 3 列布局，默认值为自适应列数
+    - 使用 `<!-- cell -->` 分隔每个网格单元，每个单元的内容会被独立渲染
+- 新增 Details 短代码，支持在文章中创建折叠面板
+  ```markdown
+  {{< details summary="?" >}}
+  内容
+  {{< /details >}}
+  ```
+    - summary：可选参数，设置折叠面板的标题
+
+---
+
+### Features
+
+- The random header image now uses a pseudo-random algorithm to ensure that different header images are displayed each time the page is generated.
+- Added the Grid shortcode, which supports displaying content in a grid layout, supporting responsive design.
+  ```markdown
+  {{< grid width=? col=? >}}
+  <!-- cell -->
+  Content 1
+  <!-- cell -->
+  Content 2
+  <!-- cell -->
+  Content 3
+  {{< /grid >}}
+  ```
+    - width: Optional parameter, sets the minimum column width, e.g., `300` means a minimum column width of 300px. Default is `240`
+    - col: Optional parameter, sets a fixed number of columns, e.g., `3` means a fixed 3-column layout. Default is auto column count
+    - Use `<!-- cell -->` to separate each grid cell, and each cell's content will be rendered independently
+- Added the Details shortcode, which supports creating foldable panels in the article.
+  ```markdown
+  {{< details summary="?" >}}
+  content
+  {{< /details >}}
+  ```
+    - summary: Optional parameter, set the title of the foldable panel
+
 ## 0.14.0
 
 **2025-11-23**
