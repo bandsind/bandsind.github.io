@@ -21,8 +21,8 @@ google_analytics:
 
 # If your repo name follows the format "<user-name>.github.io", then leave the below blank.
 # Otherwise, set its value as "/<repo-name>". ex) baseurl: /myblog
-url: "https://bandsindcs533.github.io"
-baseurl: ""
+url: "https://bandsind.github.io"
+baseurl: "https://bandsindcs533.github.io"
 
 # Build settings
 plugins:
