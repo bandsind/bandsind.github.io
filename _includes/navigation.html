@@ -36,6 +36,14 @@
     {% assign third_level_pages = third_level_pages | sort: 'url' %}
 
     <ul class="nav-list">
+        <li id="nav-first" aria-label="Home">
+            <div class="nav-item">
+                <a href="{{ '/' | relative_url }}" class="nav-list-link nav-lh">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 35-21.5 64-56.5 64h-40c-22 0-40-18-40-40v-88c0-17.7-14.3-32-32-32h-80c-17.7 0-32 14.3-32 32v88c0 22-18 40-40 40h-40c-35 0-56-29-56-64V287.6H32c-18 0-32-14-32-32 0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7l255.4 224.5c8 7 12 15 11 24z"/></svg>
+                    <span>Home</span>
+                </a>
+            </div>
+        </li>
     {%- for node in first_level_pages -%}
         {%- assign node_url = node.url | remove: 'index.html' -%}
         {%- assign node_title = node.path | remove: 'index.md' | split: "/" | last | remove: '.md' | replace: "_pages", "Home" -%}

@@ -2,7 +2,7 @@
 <html lang="en">
     {%- assign page_tree = page.path | remove_first: "_pages/" | split: "/" -%}
     {%- assign page_level = page_tree.size -%}
-    {% if page_tree.last == "index.md" %}
+    {% if page_tree.last == "index.md" or page.url == "/" or page.path == "index.html" %}
         {%- assign page_type = "category" -%}
         {%- assign category_title = page.path | remove: 'index.md' | split: "/" | last -%}
     {% else %}

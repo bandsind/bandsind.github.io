@@ -1,66 +1,57 @@
 ---
 ---
+@charset "UTF-8";
+@import "vars";
 $baseurl: "{{ site.baseurl }}";
-
-html, body {
-  margin:0;
-  padding:0;
-}
-
-.fonts-loaded {
-  a, span, p { font-family:"Nunito Sans", 'Lucida Sans', sans-serif; }
-  h1, h2, h3 { font-family:"Lato", Helvetica, sans-serif; }
-  mark { font-family:'Righteous', sans-serif; }
-}
-
-a { text-decoration:none; }
-a, span, p, h1, h2, h3, i { color:#3A241A; }
-a, span, p { font-family:'Lucida Sans', sans-serif; }
-h1, h2, h3, mark {
-  margin:0;
-  font-family:Helvetica, sans-serif;
-}
-mark { background-color:transparent; }
-
-svg {
-  width:16px;
-  aspect-ratio:1.0;
-  fill:#3A241A;
-  display:block;
-  margin:auto;
-}
-
-button {
-  border:none;
-  background:none;
-  padding:0;
-}
-
-/* Disable default input cancel button */
-input::-ms-clear,
-input::-ms-reveal{
-	display:none;
-  width:0;
-  height:0;
-}
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button,
-input::-webkit-search-results-button,
-input::-webkit-search-results-decoration{
-	display:none;
-}
-
-@import 'vars';
-@import 'layout';
-
-:root{
-  --pagewidth-desktop:calc(max(min(100vw - #{$sidebarwd} - 2rem, #{$contentwd}), 44rem));
-}
-
+@import "layout";
+/* Restored Satellite stylesheet, using the original upstream partials. */
+:root { --pagewidth-desktop: min(54rem, calc(100vw - 29rem)); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; color:#3a241a; background:#fffdfb; font-family:'Nunito Sans', 'Lato', 'Segoe UI', Arial, sans-serif; }
+body:before { content:""; position:fixed; inset:0; pointer-events:none; z-index:-2; opacity:.42; background:repeating-linear-gradient(125deg, transparent 0 97px, rgba(100,200,200,.085) 99px, transparent 104px, transparent 176px, rgba(250,66,81,.06) 179px, transparent 183px); }
+a { color:inherit; text-decoration:none; }
+a:hover { color:#b04008; }
+svg { fill:currentColor; }
+button { cursor:pointer; color:inherit; }
+mark { color:inherit; background:transparent; }
+img { max-width:100%; }
+.fonts-loaded body { font-family:'Nunito Sans','Lato','Segoe UI',Arial,sans-serif; }
+#post { position:relative; width:100%; max-width:54rem; padding:0; background:transparent; }
+.inner-content { min-height:65vh; }
+#navigation, #contact { min-width:0; }
+#stars { pointer-events:none; }
 @import "sidebar";
 @import "navigation";
 @import "pagination";
-@import "toc";
 @import "post";
 @import "search";
+@import "toc";
 @import "darkmode";
+/* Compact restoration patches: preserve Satellite layout while fixing missing upstream assets. */
+#loading { transition:opacity .2s; }
+#loading.is-hidden { opacity:0; pointer-events:none; display:none; }
+#post .inner-content { padding-bottom:1rem; }
+#navigation { display:block; }
+#contact { display:block; }
+#contact h3 { background:transparent; }
+.sidebar-right .toc { max-width:16rem; }
+#post main img { object-fit:contain; border-radius:5px; }
+#post main a[href$=".ipynb"] { display:inline-block; padding:.75rem 1.1rem; margin:0.8rem 0; border:1px solid #64c8c8; border-radius:7px; color:#2074a6; font-weight:bold; }
+#post main a[href$=".ipynb"]:hover { background:rgba(100,200,200,.13); }
+body.dark-theme #post main a[href$=".ipynb"] { color:#64c8c8; }
+.sidebar .site-avatar img { display:block; width:9rem; height:9rem; object-fit:cover; margin:1rem auto; border-radius:50%; }
+.post-info .info-box { cursor:default; }
+@media (max-width:1024px) {
+  #post { margin:0 auto; }
+  .sidebar-left { width:100%; }
+  #navigation { padding:0 .75rem; }
+  #contact { display:none; }
+  .site-avatar img { max-width:5rem; max-height:5rem; }
+}
+@media (min-width:1025px) {
+ .site-avatar img { max-width:9rem; max-height:9rem; }
+ #navigation { display:block; }
+ #contact { display:block; }
+ .sidebar-left { background:transparent; }
+}

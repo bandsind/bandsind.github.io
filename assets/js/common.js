@@ -1,358 +1,47 @@
-var baseurl = document.querySelector('meta[name="baseurl"]').content;
-
-document.addEventListener('DOMContentLoaded', function(){
-    // Init theme
-    let currentTheme = localStorage.getItem('theme');
-    let isDarkMode = false;
-
-    if (currentTheme === 'dark'){
-        isDarkMode = true;
-        const themeIcons = document.querySelectorAll(".ico-dark, .ico-light");
-
-        themeIcons.forEach((ico) => {
-            ico.classList.add('active');
-        });
-    }
-    else {
-        isDarkMode = false;
-    }
-
-    // navigation (mobile)
-    var siteNav = document.querySelector('#navigation');
-    var siteContact = document.querySelector('#contact');
-    var menuButton = document.querySelector("#btn-nav");
-
-    menuButton.addEventListener('click', function() {
-        if (menuButton.classList.toggle('nav-open')) {
-            siteNav.classList.add('nav-open');
-            siteContact.classList.add('contact-open');
-        } else {
-            siteNav.classList.remove('nav-open');
-            siteContact.classList.remove('contact-open');
-        }
+/* Restored interactions for the original Satellite Jekyll layout. */
+(function(){
+  'use strict';
+  const $=(s,scope=document)=>scope.querySelector(s);
+  const $$=(s,scope=document)=>[...scope.querySelectorAll(s)];
+  document.addEventListener('DOMContentLoaded',function(){
+    const loading=$('#loading'); if(loading){loading.classList.add('is-hidden');}
+    const saved=localStorage.getItem('theme')==='dark';
+    const setTheme=(dark)=>{
+      document.body.classList.toggle('dark-theme',dark);
+      $$('.ico-dark').forEach(x=>x.classList.toggle('active',dark));
+      $$('.ico-light').forEach(x=>x.classList.toggle('active',dark));
+      localStorage.setItem('theme',dark?'dark':'light');
+    };
+    setTheme(saved);
+    $$('#btn-brightness').forEach(b=>b.addEventListener('click',()=>setTheme(!document.body.classList.contains('dark-theme'))));
+    $('#btn-nav')?.addEventListener('click',function(){ $('#navigation')?.classList.toggle('nav-open'); this.setAttribute('aria-pressed',String($('#navigation')?.classList.contains('nav-open'))); });
+    $$('.nav-list-expander').forEach(btn=>btn.addEventListener('click',function(){const li=this.closest('li');li?.classList.toggle('active');this.setAttribute('aria-pressed',String(li?.classList.contains('active'))); }));
+    // Show nested navigation for the current article and keep original links usable.
+    const active=$$('.nav-list-link').find(a=>a.pathname.replace(/\/$/,'')===location.pathname.replace(/\/$/,''));
+    active?.closest('li')?.classList.add('current');
+    let ancestor=active?.closest('li')?.parentElement?.closest('li');while(ancestor){ancestor.classList.add('active');ancestor=ancestor.parentElement?.closest('li');}
+    const search=$('#search');
+    $$('#btn-search').forEach(b=>b.addEventListener('click',()=>{search?.classList.add('active');$('#search-input')?.focus();}));
+    search?.addEventListener('click',e=>{if(e.target===search || e.target.classList.contains('wave'))search.classList.remove('active');});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')search?.classList.remove('active');});
+    $('#btn-clear')?.addEventListener('click',()=>{const i=$('#search-input');if(i){i.value='';i.dispatchEvent(new Event('input'));i.focus();}});
+    $('.top-arrow')?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  });
+  window.searchPost=function(posts){
+    const input=document.getElementById('search-input'),results=document.getElementById('search-result');
+    if(!input||!results)return;
+    const esc=t=>String(t||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    input.addEventListener('input',()=>{
+      const q=input.value.toLowerCase().trim();results.replaceChildren();if(!q)return;
+      posts.filter(p=>(p.type==='post')&&((p.title+' '+p.tags+' '+p.path).toLowerCase().includes(q))).slice(0,16).forEach(p=>{
+        const li=document.createElement('li');const a=document.createElement('a');a.href=p.url;a.textContent=p.title;li.appendChild(a);results.appendChild(li);
+      });
+      if(!results.children.length)results.innerHTML='<li>No posts found</li>';
     });
-
-    // kept nav opened
-    var firstNavs = document.querySelectorAll('#nav-first');
-    var page_path = window.location.pathname.replace(/%20/g, " ");
-    page_path = page_path.replace(baseurl, "");
-    var page_tree = page_path.split('/');
-
-    Array.prototype.forEach.call(firstNavs, function (nav_first) {
-        if (page_tree[1] === nav_first.ariaLabel){
-            nav_first.classList.add('active');
-
-            var secondNavs = nav_first.querySelectorAll('#nav-second');
-
-            Array.prototype.forEach.call(secondNavs, function (nav_second) {
-                if (page_tree[2] === nav_second.ariaLabel){
-                    nav_second.classList.toggle('active');
-
-                    var thirdNavs = nav_second.querySelectorAll('#nav-third');
-
-                    Array.prototype.forEach.call(thirdNavs, function (nav_third) {
-                        if (page_tree[3] === nav_third.ariaLabel){
-                            nav_third.classList.toggle('active');
-                        }
-                    });
-                }
-            });
-        }
-    });
-
-    // navigation (toogle sub-category)
-    document.addEventListener('click', function(e){
-        var target = e.target;
-
-        while (target && !(target.classList && target.classList.contains('nav-list-expander'))) {
-            target = target.parentNode;
-        }
-
-        if (target) {
-            e.preventDefault();
-            var nav_item = target.parentNode;
-            target.ariaPressed = nav_item.parentNode.classList.toggle('active');
-        }
-    });
-
-    document.querySelectorAll('.nav-item').forEach((nav_item) => {
-        if (nav_item.parentNode.classList.contains('active')){
-            nav_item.classList.add('selected');
-        }
-        else {
-            nav_item.classList.remove('selected');
-        }
-    });
-
-    // Change Datk/Light Theme
-    const themeButton = document.querySelectorAll("#btn-brightness");
-    const innerContent = document.querySelector('main');
-
-    themeButton.forEach((btn) => {
-        btn.addEventListener('click', function() {
-            const moonIcons = document.querySelectorAll(".ico-dark");
-            const sunIcons = document.querySelectorAll(".ico-light");
-            const codeblocks = innerContent != null ? innerContent.querySelectorAll('pre') : null;
-
-            moonIcons.forEach((ico) => {
-                ico.classList.toggle('active');
-            });
-
-            sunIcons.forEach((ico) => {
-                ico.classList.toggle('active');
-            });
-
-            document.body.classList.toggle('dark-theme');
-
-            if (isDarkMode){
-                localStorage.setItem('theme', 'default');
-                // Disable highlighter dark color theme
-                if (codeblocks) {
-                    Array.from(codeblocks).forEach(function (codeblock){
-                        codeblock.classList.remove('pre-dark');
-                    });
-                }
-
-                changeGiscusTheme('light');
-                isDarkMode = false;
-            }
-            else {
-                localStorage.setItem('theme', 'dark');
-                // Disable highlighter default color theme
-                if (codeblocks) {
-                    Array.from(codeblocks).forEach(function (codeblock){
-                        codeblock.classList.add('pre-dark');
-                    });
-                }
-
-                changeGiscusTheme('noborder_gray');
-                isDarkMode = true;
-            }
-        });
-    });
-
-    function changeGiscusTheme(theme) {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-
-        const message = {
-            setConfig: {
-                theme: theme
-            }
-        };
-
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-    }
-
-    // search box
-    const searchButton = document.querySelectorAll("#btn-search");
-    const cancelButton = document.querySelector('#btn-clear');
-    const searchPage = document.querySelector("#search");
-
-    if (searchButton) {
-        searchButton.forEach((btn) => {
-            btn.addEventListener('click', function() {
-                searchPage.classList.add('active');
-                document.getElementById("search-input").focus();
-            });
-        });
-    }
-
-    if (searchPage) {
-        searchPage.addEventListener('click', function(event) {
-            const searchBar = document.querySelector(".search-box");
-            var target = event.target;
-
-            if (searchBar.contains(target))
-                return;
-
-            searchPage.classList.remove('active');
-        });
-    }
-
-    if (cancelButton) {
-        cancelButton.addEventListener('click', function() {
-            document.getElementById('btn-clear').style.display = 'none';
-            document.getElementById('search-input').value = "";
-
-            Array.from(document.querySelectorAll('.result-item')).forEach(function (item) {
-                item.remove();
-            });
-        });
-    }
-});
-
-function searchPost(pages){
-    document.getElementById('search-input').addEventListener('keyup', function() {
-        var keyword = this.value.toLowerCase();
-        var matchedPosts = [];
-        const searchResults = document.getElementById('search-result');
-        const prevResults = document.querySelector(".result-item");
-    
-        if (keyword.length > 0) {
-            searchResults.style.display = 'block';
-            document.getElementById('btn-clear').style.display = 'block';
-        } else {
-            searchResults.style.display = 'none';
-            document.getElementById('btn-clear').style.display = 'none';
-        }
-        
-        Array.from(document.querySelectorAll('.result-item')).forEach(function (item) {
-            item.remove();
-        });
-    
-        for (var i = 0; i < pages.length; i++) {
-            var post = pages[i];
-    
-            if (post.title === 'Home' && post.type == 'category') continue;
-    
-            if (post.title.toLowerCase().indexOf(keyword) >= 0
-            || post.path.toLowerCase().indexOf(keyword) >= 0
-            || post.tags.toLowerCase().indexOf(keyword) >= 0){
-                matchedPosts.push(post);
-            }
-        }
-    
-        if (matchedPosts.length === 0) {
-            insertItem('<span class="description">There is no search result.</span>');
-
-            return;
-        } 
-    
-        matchedPosts.sort(function (a, b) {
-            if (a.type == 'category') return 1;
-    
-            return -1;
-        });
-    
-        for (var i = 0; i < matchedPosts.length; i++) {
-            var highlighted_path = highlightKeyword(matchedPosts[i].path, keyword);
-    
-            if (highlighted_path === '')
-                highlighted_path = "Home";
-    
-            if (matchedPosts[i].type === 'post'){
-                var highlighted_title = highlightKeyword(matchedPosts[i].title, keyword);
-                var highlighted_tags = highlightKeyword(matchedPosts[i].tags, keyword);
-    
-                if (highlighted_tags === '')
-                    highlighted_tags = "none";
-
-                insertItem('<a href="' +
-                    matchedPosts[i].url +
-                    '"><table><thead><tr><th><svg class="ico-book"></svg></th><th>' + highlighted_title +  
-                    '</th></tr></thead><tbody><tr><td><svg class="ico-folder"></svg></td><td>' + highlighted_path +
-                    '</td></tr><tr><td><svg class="ico-tags"></svg></td><td>' + highlighted_tags +
-                    '</td></tr><tr><td><svg class="ico-calendar"></svg></td><td>' + matchedPosts[i].date +
-                    '</td></tr></tbody></table></a>'
-                );
-            }
-            else {
-                insertItem('<a href="' +
-                    matchedPosts[i].url +
-                    '"><table><thead><tr><th><svg class="ico-folder"></svg></th><th>' + highlighted_path + 
-                    '</th></tr></thead></table></a>'
-                );
-            }
-        }
-
-        function insertItem(inner_html){
-            let contents = document.createElement("li");
-            contents.classList.add("result-item");
-            contents.innerHTML = inner_html;
-            searchResults.append(contents);
-        }
-    });
-
-    function highlightKeyword(txt, keyword) {
-        var index = txt.toLowerCase().lastIndexOf(keyword);
-    
-        if (index >= 0) { 
-            out = txt.substring(0, index) + 
-                "<span class='highlight'>" + 
-                txt.substring(index, index+keyword.length) + 
-                "</span>" + 
-                txt.substring(index + keyword.length);
-            return out;
-        }
-    
-        return txt;
-    }
-}
-
-function searchRelated(pages){
-    const refBox = document.getElementById('related-box');
-    const refResults = document.getElementById('related-posts');
-
-    if (!refBox) return;
-
-    var relatedPosts = [];
-    var currPost = pages.find(obj => {return obj.url === location.pathname});
-
-    let currTags = currPost.tags.split(', ');
-    let currCategory = currPost.path.split(' > ').pop();
-
-    for (var i = 0; i < pages.length; i++) {
-        let page = pages[i];
-
-        if (page.type === 'category') continue;
-
-        if (page.title === currPost.title) continue;
-
-        let tags = page.tags.split(', ');
-        let category = page.path.split(' > ').pop();
-        let correlationScore = 0;
-
-        for (var j = 0; j < currTags.length; j++){
-            if (tags.indexOf(currTags[j]) != -1) correlationScore += 1;
-        }
-
-        if (category === currCategory) correlationScore += 1;
-
-        if (correlationScore == 0) continue;
-
-        relatedPosts.push({
-            'title': page.title,
-            'date': page.date,
-            'category': category,
-            'url': page.url,
-            'thumbnail': page.image,
-            'score': correlationScore
-        });
-    }
-
-    relatedPosts.sort(function (a, b) {
-        if(a.hasOwnProperty('score')){
-            return b.score - a.score;
-        }
-    });
-
-    if (relatedPosts.length == 0){
-        refBox.style.display = 'none';
-        return;
-    }
-
-    for (var i = 0; i < Math.min(relatedPosts.length, 6); i++){
-        let post = relatedPosts[i];
-        let date = '-';
-        let category = 'No category';
-
-        if (post.date !== '1900-01-01'){
-            date = new Date(post.date);
-            date = date.toLocaleString('en-US', {day: 'numeric', month:'long', year:'numeric'});
-        }
-
-        if (post.category !== '') category = post.category;
-
-        let contents = document.createElement("li");
-        contents.classList.add("related-item");
-        contents.innerHTML = '<a href="' + post.url +
-            '"><img src="' + post.thumbnail + 
-            '"/><p class="category">' + category +  
-            '</p><p class="title">' + post.title + 
-            '</p><p class="date">' + date +
-            '</p></a>';
-
-        refResults.append(contents);
-    }
-}
+  };
+  window.searchRelated=function(posts){
+    const ul=document.getElementById('related-posts');if(!ul)return;
+    const others=posts.filter(p=>p.type==='post'&&p.url!==location.pathname).slice(0,3);
+    others.forEach(p=>{const li=document.createElement('li');const a=document.createElement('a');a.href=p.url;a.className='title';a.textContent=p.title;li.appendChild(a);ul.appendChild(li);});
+  };
+})();

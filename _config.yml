@@ -1,27 +1,28 @@
-title: example.com
-description: "Satellite - jekyll blog theme"
+title: "Sindi's Data Lab"
+description: "A personal space for data science, statistics, and practical Python insights"
 logo_img: "/assets/img/favicon.webp"
 profile_img: "/assets/img/profile.webp"
 
 # Social Links
-email: example@gmail.com
-github_username: github
-twitter_username: twitter
-instagram_username: instagram
-linkedin_username: linkedin
-facebook_username: facebook
+email: ""
+github_username: bandsindcs533
+twitter_username: ""
+instagram_username: ""
+linkedin_username: ""
+facebook_username: ""
 
 # External API
-giscus_repo: "byanko55/jekyll-theme-satellite"
-giscus_repoId: "R_kgDOJ6fqWg"
-giscus_category: "Q&A"
-giscus_categoryId: "DIC_kwDOJ6fqWs4Cc7p7"
-goatcounter_code: byanko77
+giscus_repo: ""
+giscus_repoId: ""
+giscus_category: ""
+giscus_categoryId: ""
+goatcounter_code: ""
 google_analytics:
 
 # If your repo name follows the format "<user-name>.github.io", then leave the below blank.
 # Otherwise, set its value as "/<repo-name>". ex) baseurl: /myblog
-baseurl:
+url: "https://bandsindcs533.github.io"
+baseurl: ""
 
 # Build settings
 plugins:
@@ -32,6 +33,8 @@ plugins:
 
 exclude:
   - docs/
+  - scripts/
+  - README_LOCAL_TESTING.md
 
 collections:
   pages:
