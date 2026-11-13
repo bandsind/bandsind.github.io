@@ -358,7 +358,7 @@ Here are my main takeaways from running the examples:
 
 If you want to run every cell, including the additional sample tables and plots, the notebook is available here. The download is provided **inside this post**, not in the site sidebar.
 
-[**Download the complete Jupyter notebook (.ipynb)**]({{ "/notebooks/Sindi-P3-correlation-and-p-values.ipynb" | relative_url }})
+[**Download the complete Jupyter notebook (.ipynb)**]({{ "/notebooks/Sindi-P3-correlation-and-p-values.ipynb" | relative_url }}){: download="Sindi-P3-correlation-and-p-values.ipynb"}
 
 **References and tools**
 
