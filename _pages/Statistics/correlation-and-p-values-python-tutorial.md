@@ -368,4 +368,3 @@ If you want to run every cell, including the additional sample tables and plots,
 - [pandas plotting documentation](https://pandas.pydata.org/docs/reference/api/pandas.plotting.scatter_matrix.html)
 - [Customer dataset used in the notebook](https://gitlab.com/CEADS/DrKerby/python/raw/master/churn.txt)
 
-*The tutorial is based on the supplied class notebook, with its recorded outputs and figures retained and reorganized for a general audience. Cite the instructor or original author as appropriate if the notebook was provided as course material.*
